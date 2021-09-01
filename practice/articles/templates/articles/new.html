@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="my-3">글쓰기</h1>
+<hr>
+<form action="{% url 'articles:create' %}" method="POST">
+  {% csrf_token %}
+  <br>
+  <div class="row">
+    <div class="offset-1 col-4">
+      <input class="w-100" type="text" id="title" name="title" placeholder="제목을 입력해주세요.">
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="offset-1 col-6">
+      <textarea class="w-100" name="content" id="content" cols="30" rows="10"></textarea>
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-center">
+    <div class="offset-4 col-2">
+      <a class="btn btn-secondary" href="{% url 'articles:index' %}">취소</a>
+      <input class="btn btn-primary" type="submit">
+    </div>
+  </div>
+</form>
+<br>
+<hr>
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="my-3"><a class="" href="">게시판</a></h1>
+<hr>
+<div class="row text-center fs-5 fw-bold">
+  <div class="col-1">글 번호</div>
+  <div class="col-4">제 목</div>
+  <div class="col-4">내 용</div>
+  <div class="col-3">만든 날짜</div>
+</div>
+<hr>
+{% for article in articles %}
+<div class="row text-center">
+  <div class="col-1">{{ article.pk }}</div>
+  {% if article.title|length < 28 %}
+  <div class="col-4"><a href="{{ article.pk }}/">{{ article.title }}</a></div>
+  {% else %}
+  <div class="col-4"><a href="{{ article.pk }}/">{{ article.title|truncatechars:28 }}</a></div>
+  {% endif %}  
+  {% if article.content|length < 28 %}
+  <div class="col-4"><a href="{{ article.pk }}">{{ article.content }}</a></div>
+  {% else %}
+  <div class="col-4"><a href="{{ article.pk }}">{{ article.content|truncatechars:28 }}</a></div>
+  {% endif %}
+  <div class="col-3">{{ article.created_at }}</div>
+</div>
+<br>
+{% endfor %}
+
+<footer class="d-flex justify-content-end">
+  <a class="btn btn-secondary me-2 my-5" href="{% url 'articles:new' %}" role="button">글쓰기</a>
+</footer>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="my-3">글 작성이 완료되었습니다.</h1>
+<hr>
+<div class="ms-5 my-3">
+  <span class="text-secondary">작성한 글 보러가기</span>
+  <br>
+  <a href="{% url 'articles:index' %}">메인 화면으로 나가기</a>
+  <br>
+  <a href="{% url 'articles:new' %}">새로운 글 작성하기</a>
+</div>
+<hr>
+{% endblock content %}
