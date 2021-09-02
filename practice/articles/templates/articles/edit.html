@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="my-3">수정하기</h1>
+<hr>
+<form action="{% url 'articles:update' article.pk %}" method="POST">
+  {% csrf_token %}
+  <br>
+  <div class="row">
+    <div class="offset-1 col-4">
+      <input class="w-100" type="text" id="title" name="title" placeholder="제목을 입력해주세요." value="{{ article.title }}">
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="offset-1 col-6">
+      <textarea class="w-100" name="content" id="content" cols="30" rows="10" placeholder="제목과 내용이 비어있으면 작성되지 않습니다.">{{ article.content }}</textarea>
+    </div>
+    <div class="offset-1 col-3 border">
+      <img src="" alt="ad">
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-center">
+    <div class="offset-4 col-3">
+      <a class="btn btn-secondary btn-w-1" href="{% url 'articles:index' %}">취소</a>
+      <button class="btn btn-success btn-w-1">수정</button>
+    </div>
+  </div>
+</form>
+<br>
+<hr>
+{% endblock content %}

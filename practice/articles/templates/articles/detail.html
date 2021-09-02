@@ -7,13 +7,21 @@
   <div class="offset-1 col-10">
     <b class="fs-4">{{ article.title }}</b>
     <br>
-    {{ article.created_at }}<span style="font-size: 10px;"> 작성됨</span>
+    {{ article.updated_at }}<span style="font-size: 10px;"> 변경됨</span>
   </div>
   <div class="offset-1 col-10 mt-4">
     <p>{{ article.content }}</p>
   </div>
 </div>
-<div class="my-4 offset-10 col-1">
-  <a class="btn btn-secondary" href="{% url 'articles:index' %}">뒤로가기</a>
+<div class="my-4 offset-7 col-4">
+  <form class="d-inline" action="{% url 'articles:edit' article.pk %}" method="POST">
+    {% csrf_token %}
+    <button class="btn btn-primary btn-w-1">수정</button>
+  </form>
+  <form class="d-inline" action="{% url 'articles:delete' article.pk %}" method="POST">
+    {% csrf_token %}
+    <button class="btn btn-danger btn-w-1" onclick="return confirm('정말로 삭제하시겠습니까?')">삭제</button>
+  </form>
+  <a class="btn btn-secondary btn-w-2" href="{% url 'articles:index' %}">뒤로가기</a>
 </div>
 {% endblock content %}
