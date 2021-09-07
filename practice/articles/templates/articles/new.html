@@ -16,8 +16,9 @@
     <div class="offset-1 col-6">
       <textarea class="w-100" name="content" id="content" cols="30" rows="10" placeholder="제목과 내용이 비어있으면 작성되지 않습니다."></textarea>
     </div>
-    <div class="offset-1 col-3 border">
-      <img src="../../../images" alt="ad">
+    <div class="offset-1 col-3">
+      {% load static %}
+      <img class="w-100 border border-secondary" src="{% static 'articles/carrot.jpg' %}" alt="ad">
     </div>
   </div>
   <br>

@@ -60,7 +60,7 @@ def update(request, pk):
 # DELETE
 def delete(request, pk):
     article = Article.objects.get(pk=pk)
-    if request.method == 'POST':
+    if request.method == 'POST' or request.method == 'GET':
         article.delete()
         return redirect('articles:index')
     else:

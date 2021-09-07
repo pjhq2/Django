@@ -12,9 +12,9 @@
 <hr>
 {% for article in articles %}
 <div class="row">
-  <div class="col-1 text-center">{{ article.pk }}</div>
+  <div class="col-1 text-center">{{ forloop.counter }}</div>
   {% if article.title|length < 28 %}
-  <div class="col-4"><a href="{{ article.pk }}/">{{ article.title }}</a></div>
+  <div class="col-4"><a href="{{ article.pk }}/">{{ article.title }} <span class="text-secondary">[{{ article.pk }}]</span></a></div>
   {% else %}
   <div class="col-4"><a href="{{ article.pk }}/">{{ article.title|truncatechars:28 }}</a></div>
   {% endif %}  
@@ -23,7 +23,7 @@
   {% else %}
   <div class="col-4"><a href="{{ article.pk }}">{{ article.content|truncatechars:28 }}</a></div>
   {% endif %}
-  <div class="col-3 text-center">{{ article.created_at }}</div>
+  <div class="col-3 text-center">{{ article.created_at|date:"Y년 m월 d일 (D) A G:i" }}</div>
 </div>
 <br>
 {% endfor %}
