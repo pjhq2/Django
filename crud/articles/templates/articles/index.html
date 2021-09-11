@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block content %}
+<img class="mx-auto d-block" src="{% static 'images/ssafy.png' %}" alt="ssafy.png">
+<h1 class="text-danger">Articles</h1>
+<a href="{% url 'articles:create' %}">[CREATE]</a>
+<hr>
+{% for article in page_obj %}
+  <p>글 번호 : {{ article.pk }}</p>
+  <p>글 제목 : {{ article.title }}</p>
+  <p>
+    {% if article.thumbnail_image %}
+      <img src="{{ article.thumbnail_image.url }}" alt="">
+    {% endif %}
+  </p>
+  <p>글 내용 : {{ article.content }}</p>
+  <a href="{% url 'articles:detail' article.pk %}">[DETAIL]</a>
+  <hr>
+{% endfor %}
+
+<div class="d-flex justify-content-center mt-5">
+  {% bootstrap_pagination page_obj %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>제목 : {{ article.title|linebreaksbr }}</p>
+<p>내용 : {{ article.content|linebreaks }}</p>
+{% if article.image %}
+  <img src="{{ article.image.url }}" alt="{{ article.image }}">
+{% endif %}
+<p>작성시각 : {{ article.created_at }}</p>
+<p>수정시각 : {{ article.updated_at }}</p>
+<hr>
+<a href="{% url 'articles:update' article.pk %}"><button class="btn btn-primary m-1">UPDATE</button></a>
+<br>
+<form action="{% url 'articles:delete' article.pk %}" method="POST">
+  {% csrf_token %}
+  <button class="btn btn-danger m-1" onclick="return confirm('정말로 삭제하시겠습니까?')">DELETE</button>
+</form>
+<br>
+<a href="{% url 'articles:index' %}">[back]</a>
+{% endblock content %}
