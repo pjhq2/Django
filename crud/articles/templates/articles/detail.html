@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p>제목 : {{ article.title|linebreaksbr }}</p>
+<p>제목 : {{ article.title }}</p>
 <p>내용 : {{ article.content|linebreaks }}</p>
 {% if article.image %}
   <img src="{{ article.image.url }}" alt="{{ article.image }}">
