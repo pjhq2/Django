@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+<h1>회원가입</h1>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <button class="btn btn-primary">확인</button>
+  <a href="{% url 'home:index' %}" class="btn btn-secondary">뒤로가기</a>
+</form>
+
+{% endblock content %}

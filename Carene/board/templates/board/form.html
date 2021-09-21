@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data" class="border p-4 mt-4">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary d-inline-block">등록</button>
+    <a href="{% url 'board:index' %}" class="btn btn-secondary">뒤로가기</a>
+  </div>
+</form>
+{% endblock content %}
